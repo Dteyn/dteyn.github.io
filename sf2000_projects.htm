@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta data for the webpage -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dteyn's SF2000 Projects</title>
+
+    <!-- Inline CSS for styling -->
+    <style>
+        /* Set the background color to light green */
+        body {
+            background-color: #DFFFD6;
+            font-family: 'Sans-serif';  /* Use sans-serif font */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style for the header */
+        .header {
+            background-color: #B2D8B2;
+            padding: 10px;
+            text-align: center;
+            font-size: 30px;
+			font-weight: bold;
+        }
+
+        /* Style for the project list */
+        .project-list {
+            max-width: 800px;  /* Set a maximum width for better readability */
+            margin: 20px auto; /* Center the list on the page */
+            padding: 20px;
+            background-color: #E6FFF2;  /* Lighter green for contrast */
+            border-radius: 5px;  /* Rounded corners */
+        }
+
+        /* Style for individual project items */
+        .project-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #B2D8B2;  /* Green border between items */
+        }
+
+        /* Remove border for the last project item */
+        .project-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        Dteyn's SF2000 Projects
+    </div>
+
+    <!-- Project List -->
+    <div class="project-list">
+        <!-- SF2000 Silent Sounds Project -->
+        <div class="project-item">
+            <h2>SF2000 Silent Sounds Pack</h2>
+            <p>These are replacement sound effects for the SF2000 retro handheld to make the sound effects silent.</p>
+			<p>To use, add these files to the <code>/Resources</code> folder on your microSD card.
+            
+			<h3>Complete Pack:</h3>
+			<a href="https://github.com/Dteyn/sf2000/raw/main/sounds/silentSounds/SF2000_Silent_Sounds_Pack.zip">SF2000_Silent_Sounds_Pack.zip</a>: Contains all sound files listed below <i>(Except Background Music, see below)</i></li>
+			
+            <h3>Individual Sound Files:</h3>
+			<ul>
+				<li><a href="https://github.com/Dteyn/sf2000/raw/main/sounds/silentSounds/c2fkec.pgt">c2fkec.pgt</a>: "Popping" sound that is played when moving around the search keyboard</li>
+				<li><a href="https://github.com/Dteyn/sf2000/raw/main/sounds/silentSounds/mfsvr.nkf">mfsvr.nkf</a>: "Beep" sound that is played when entering a letter on the search keyboard</li>
+				<li><a href="https://github.com/Dteyn/sf2000/raw/main/sounds/silentSounds/nyquest.gdb">nyquest.gdb</a>: "Whooshing" sound that is played when switching between emulated systems on the main menu, between the "Resume", "Quit", "Load" and "Save" options on the in-game menu, and scrolling by pages within a system's game-list</li>
+				<li><a href="https://github.com/Dteyn/sf2000/raw/main/sounds/silentSounds/oldversion.kbe">oldversion.kbe</a>: "Three Note Upward Chime" sound that is played when deleting a letter on the search keyboard</li>
+				<li><a href="https://github.com/Dteyn/sf2000/raw/main/sounds/silentSounds/swapfile.sys">swapfile.sys</a>: "Squishy" sound played when navigating horizontally through "shortcut" games on the main menu, or vertically within a system's game-list</li>
+			</ul>
+
+			<h3>Unused sounds (included for completeness sake):</h3>
+			<ul>
+				<li><a href="https://github.com/Dteyn/sf2000/raw/main/sounds/silentSounds/dpnet.dll">dpnet.dll</a>: "Downwards Zap" sound, unknown usage</li>
+				<li><a href="https://github.com/Dteyn/sf2000/raw/main/sounds/silentSounds/dsreg.bvs">dsreg.bvs</a>: "Upwards Bleeping" sound, unknown usage</li>
+				<li><a href="https://github.com/Dteyn/sf2000/raw/main/sounds/silentSounds/help.lis">help.lis</a>: "Double Buzzer" sound, unknown usage</li>
+			</ul>
+
+
+            <h3>Background Music:</h3>
+            <p><a href="https://github.com/Dteyn/sf2000/raw/main/sounds/silentMusic/pagefile.sys">pagefile.sys</a>: Silent main menu background music (credit to VonMillhausen)</p>
+        </div>
+
+        <!-- Kerokero - SF2000 BGM Tool -->
+        <div class="project-item">
+            <h2>Kerokero - SF2000 BGM Tool</h2>
+            <p>Kerokero is a background music creator for the Data Frog SF2000 console. It supports .WAV and .MP3 formats, allowing users to preview, mark in/out points, adjust gain, and save clips in various formats including a specialized 'pagefile.sys' format.</p>
+            <a href="https://github.com/Dteyn/SF2000_BGM_Tool">Kerokero - SF2000 BGM Tool</a>
+        </div>
+		
+        <!-- SF2000 Battery Level Patcher -->
+        <div class="project-item">
+            <h2>SF2000 Battery Meter Fix</h2>
+            <p>This tool can be used to fix the battery meter on an SF2000 handheld gaming console so that it better represents the charge status of the stock battery.</p>
+            <li><a href="https://dteyn.github.io/sf2000/tools/batteryMeterFix.htm">SF2000 Battery Meter Fix - Web Based Tool</a></li>
+			<li><a href="https://github.com/Dteyn/SF2000_Battery_Level_Patcher">SF2000 Battery Meter Fix - Github Repository with Python Script and More Info</a></li>
+        </div>
+
+        <!-- SF2000 Vanilla OS Project -->
+        <div class="project-item">
+            <h2>SF2000 Vanilla OS Project</h2>
+            <p>This repository is a stripped-down, "vanilla" version of the Datafrog SF2000 Operating System. It provides a clean slate for users to customize and add their own ROMs.</p>
+            <a href="https://github.com/Dteyn/Datafrog_SF2000_Vanilla">SF2000 Vanilla OS Project</a>
+        </div>
+
+        <!-- SF2000 ZFBTool -->
+        <div class="project-item">
+            <h2>SF2000 ZFBTool</h2>
+            <p>ZFBTool is a utility for the Data Frog SF2000 retro handheld. It simplifies the creation of .zfb files, pairing custom thumbnails with game ROMs. Features include single-file processing and bulk processing from a folder</p>
+            <a href="https://github.com/Dteyn/ZFBTool">SF2000 ZFBTool</a>
+        </div>
+
+	<h1>More Information on the SF2000</h1>
+	<p>For more information on the SF2000 retro handheld, see VonMillhausen's repository here:</p>
+	<a href="https://vonmillhausen.github.io/sf2000/">VonMillhausen's SF2000 Webpage</a>
+    </div>
+
+</body>
+
+</html>
