@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:01.000 --> 00:00:07.433
+Wybierz plik audio (.mp3, .wav)
+
+2
+00:00:10.000 --> 00:00:15.000
+Odtwórz podgląd audio, dostosuj wzmocnienie w razie potrzeby
+
+3
+00:00:17.666 --> 00:00:25.550
+Zaznacz punkt 'In', gdzie powinien zaczynać się loop
+
+4
+00:00:28.716 --> 00:00:35.366
+Jeśli się pomyliłeś, kliknij Stop, a następnie Odtwórz,
+aby spróbować ponownie, aż będziesz zadowolony z punktu 'In'.
+
+5
+00:00:39.500 --> 00:00:47.833
+Gdy pojawi się moment w audio, w którym chcesz,
+aby zaczęła się pętla, kliknij 'Mark Out', aby zaznaczyć
+koniec audio. Klipy mogą mieć maksymalnie 90 sekund.
+
+6
+00:00:52.033 --> 00:00:59.766
+W tym przykładzie celowo kliknąłem 'Mark Out' nieco
+za późno, aby pokazać, jak można to dostosować.
+
+7
+00:01:03.433 --> 00:01:12.266
+Teraz przeprowadzimy podgląd, aby usłyszeć, jak brzmi
+przejście pętli. Tak będzie to brzmiało na urządzeniu
+podczas odtwarzania w pętli.
+
+8
+00:01:14.600 --> 00:01:21.933
+Pętla jest trochę niedokładna. Wydaje się, że kończy się
+zbyt późno. Dostosuję więc 'Pozycję Końcową',
+aby klip kończył się wcześniej.
+
+9
+00:01:30.000 --> 00:01:37.666
+Teraz widzę, że zaczyna się też zbyt wcześnie.
+Dostosuję więc odpowiednio 'Pozycję Początkową'.
+
+10
+00:01:46.783 --> 00:01:52.050
+Dużo lepiej! Dostosujmy jeszcze trochę Pozycję Końcową.
+
+11
+00:02:00.000 --> 00:02:05.600
+To proces, ale aby uzyskać najlepszy rezultat,
+dopracuj ustawienia, aż uzyskasz najlepiej brzmiącą pętlę.
+
+12
+00:02:13.266 --> 00:02:19.933
+Jeszcze jedna drobna korekta i powinniśmy to mieć.
+
+13
+00:02:27.716 --> 00:02:32.716
+Idealnie! Teraz klip audio zapętla się bezproblemowo.
+
+14
+00:02:38.716 --> 00:02:43.716
+Gdy jesteś zadowolony, kliknij Zapisz Klip Audio
+i zapisz swój nowy plik 'pagefile.sys'.
+
+15
+00:02:46.766 --> 00:02:55.050
+Możesz teraz skopiować plik do folderu '/Resources'
+na karcie SD. Miłego użytkowania!

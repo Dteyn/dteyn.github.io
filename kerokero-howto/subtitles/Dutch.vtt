@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:01.000 --> 00:00:07.433
+Selecteer audiobestand (.mp3, .wav)
+
+2
+00:00:10.000 --> 00:00:15.000
+Audio voorbeluisteren, pas gain aan indien nodig
+
+3
+00:00:17.666 --> 00:00:25.550
+Markeer het 'In'-punt waar de loop moet beginnen
+
+4
+00:00:28.716 --> 00:00:35.366
+Als je het gemist hebt, klik op Stop en daarna op Afspelen
+om het opnieuw te proberen totdat je tevreden bent met het 'In'-punt.
+
+5
+00:00:39.500 --> 00:00:47.833
+Wanneer het gewenste punt in de audio verschijnt,
+klik op 'Mark Out' om het einde van de audio te markeren.
+Clips kunnen maximaal 90 seconden duren.
+
+6
+00:00:52.033 --> 00:00:59.766
+In dit voorbeeld klikte ik expres iets te laat op 'Mark Out'
+om te laten zien hoe je dit kunt aanpassen.
+
+7
+00:01:03.433 --> 00:01:12.266
+Nu gaan we een preview doen om te horen hoe de
+loopovergang klinkt. Zo zal het klinken op het apparaat
+wanneer het herhaalt.
+
+8
+00:01:14.600 --> 00:01:21.933
+De loop is een beetje off. Het klinkt alsof hij
+te laat eindigt. Ik zal dus de 'Eindpositie' aanpassen
+zodat de clip eerder stopt.
+
+9
+00:01:30.000 --> 00:01:37.666
+Nu merk ik dat hij ook te vroeg begint.
+Ik pas dus de 'Startpositie' dienovereenkomstig aan.
+
+10
+00:01:46.783 --> 00:01:52.050
+Veel beter! Laten we de Eindpositie nog wat meer fine-tunen.
+
+11
+00:02:00.000 --> 00:02:05.600
+Het is een proces, maar om het beste resultaat te krijgen,
+blijf aanpassen totdat je de best klinkende loop hebt.
+
+12
+00:02:13.266 --> 00:02:19.933
+Nog een kleine aanpassing en we zijn er.
+
+13
+00:02:27.716 --> 00:02:32.716
+Perfect! Nu loopt de audioclip naadloos.
+
+14
+00:02:38.716 --> 00:02:43.716
+Als je tevreden bent, klik op Audio Clip Opslaan
+en sla je nieuwe 'pagefile.sys'-bestand op.
+
+15
+00:02:46.766 --> 00:02:55.050
+Je kunt het bestand nu kopiëren naar je '/Resources'-map
+op de SD-kaart. Veel plezier!

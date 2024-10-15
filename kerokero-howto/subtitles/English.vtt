@@ -1,0 +1,75 @@
+WEBVTT
+
+1
+00:00:01.000 --> 00:00:07.433
+Select audio file (.mp3, .wav)
+
+2
+00:00:10.000 --> 00:00:15.000
+Preview audio, adjust gain if needed
+
+3
+00:00:17.666 --> 00:00:25.550
+Mark the 'In' point where loop should begin
+
+4
+00:00:28.716 --> 00:00:35.366
+If you missed, click Stop and then Play to try 
+again until you're happy with the 'In' point.
+
+5
+00:00:39.500 --> 00:00:47.833
+Then, when the point in the audio comes up that you 
+want it to loop at, click 'Mark Out' to mark the end 
+of the audio. Clips can be a maximum of 90 seconds.
+
+6
+00:00:52.033 --> 00:00:59.766
+In this example, I clicked 'Mark Out' a bit too 
+late on purpose, to show how it can be adjusted.
+
+7
+00:01:03.433 --> 00:01:12.266
+Now we will preview to see how the loop transition 
+sounds. This is how it will sound on the device 
+when it loops.
+
+8
+00:01:14.600 --> 00:01:21.933
+The loop is a bit off. It sounds like it ends 
+too late. So, I will adjust 'End Position' 
+so clip ends sooner.
+
+9
+00:01:30.000 --> 00:01:37.666
+Now I can tell it also starts too soon. So I 
+will adjust the 'Start Position' accordingly.
+
+10
+00:01:46.783 --> 00:01:52.050
+Much closer! Let's adjust the End position 
+a bit more.
+
+11
+00:02:00.000 --> 00:02:05.600
+It's a process, but to get the best result, 
+fine tune until you get the best sounding loop.
+
+12
+00:02:13.266 --> 00:02:19.933
+One more small adjustment and we should have it.
+
+13
+00:02:27.716 --> 00:02:32.716
+Perfect!! Now the audio clip loops seamlessly.
+
+14
+00:02:38.716 --> 00:02:43.716
+When you're happy with it, click on Save Audio 
+Clip and save your new 'pagefile.sys' file.
+
+15
+00:02:46.766 --> 00:02:55.050
+You can now copy the file to your '/Resources' 
+folder on SD card. Enjoy!!
+

@@ -1,0 +1,74 @@
+WEBVTT
+
+1
+00:00:01.000 --> 00:00:07.433
+Selecione o arquivo de áudio (.mp3, .wav)
+
+2
+00:00:10.000 --> 00:00:15.000
+Pré-visualize o áudio, ajuste o ganho se necessário
+
+3
+00:00:17.666 --> 00:00:25.550
+Marque o ponto 'In' onde o loop deve começar
+
+4
+00:00:28.716 --> 00:00:35.366
+Se você errou, clique em Parar e depois em Reproduzir
+para tentar novamente até estar satisfeito com o ponto 'In'.
+
+5
+00:00:39.500 --> 00:00:47.833
+Então, quando o ponto no áudio que você deseja
+fazer o loop aparecer, clique em 'Mark Out' para marcar o fim
+do áudio. Os clipes podem ter no máximo 90 segundos.
+
+6
+00:00:52.033 --> 00:00:59.766
+Neste exemplo, cliquei em 'Mark Out' um pouco tarde
+de propósito, para mostrar como pode ser ajustado.
+
+7
+00:01:03.433 --> 00:01:12.266
+Agora vamos pré-visualizar para ouvir como a transição
+do loop soa. É assim que soará no dispositivo
+quando repetir.
+
+8
+00:01:14.600 --> 00:01:21.933
+O loop está um pouco fora. Parece que termina
+tarde demais. Então, vou ajustar a 'End Position'
+para que o clipe termine mais cedo.
+
+9
+00:01:30.000 --> 00:01:37.666
+Agora posso dizer que também começa cedo demais.
+Então, vou ajustar a 'Start Position' de acordo.
+
+10
+00:01:46.783 --> 00:01:52.050
+Bem melhor! Vamos ajustar a 'End Position'
+um pouco mais.
+
+11
+00:02:00.000 --> 00:02:05.600
+É um processo, mas para obter o melhor resultado,
+ajuste até conseguir o loop com o melhor som.
+
+12
+00:02:13.266 --> 00:02:19.933
+Mais um pequeno ajuste e devemos tê-lo.
+
+13
+00:02:27.716 --> 00:02:32.716
+Perfeito!! Agora o clipe de áudio faz loop perfeitamente.
+
+14
+00:02:38.716 --> 00:02:43.716
+Quando estiver satisfeito, clique em Salvar Clipe
+de Áudio e salve seu novo arquivo 'pagefile.sys'.
+
+15
+00:02:46.766 --> 00:02:55.050
+Agora você pode copiar o arquivo para a pasta
+'/Resources' no cartão SD. Aproveite!!

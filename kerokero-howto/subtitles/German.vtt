@@ -1,0 +1,75 @@
+WEBVTT
+
+1
+00:00:01.000 --> 00:00:07.433
+Wählen Sie die Audiodatei aus (.mp3, .wav)
+
+2
+00:00:10.000 --> 00:00:15.000
+Audio vorhören, Gain bei Bedarf anpassen
+
+3
+00:00:17.666 --> 00:00:25.550
+Markieren Sie den 'In'-Punkt, wo die Schleife beginnen soll
+
+4
+00:00:28.716 --> 00:00:35.366
+Falls Sie den Punkt verpasst haben, klicken Sie auf Stopp
+und dann auf Play, um es erneut zu versuchen,
+bis Sie mit dem 'In'-Punkt zufrieden sind.
+
+5
+00:00:39.500 --> 00:00:47.833
+Wenn der gewünschte Punkt im Audio erreicht ist,
+klicken Sie auf 'Mark Out', um das Ende des Audios
+zu markieren. Clips können maximal 90 Sekunden lang sein.
+
+6
+00:00:52.033 --> 00:00:59.766
+In diesem Beispiel habe ich absichtlich etwas zu spät
+auf 'Mark Out' geklickt, um zu zeigen, wie man es anpasst.
+
+7
+00:01:03.433 --> 00:01:12.266
+Nun werden wir eine Vorschau machen, um zu hören,
+wie der Loop-Übergang klingt. So wird es
+auf dem Gerät klingen, wenn es schleift.
+
+8
+00:01:14.600 --> 00:01:21.933
+Der Loop ist etwas daneben. Es klingt, als ob er
+zu spät endet. Ich werde also die 'Endposition' anpassen,
+damit der Clip früher endet.
+
+9
+00:01:30.000 --> 00:01:37.666
+Jetzt merke ich, dass er auch zu früh beginnt.
+Ich passe also die 'Startposition' entsprechend an.
+
+10
+00:01:46.783 --> 00:01:52.050
+Viel besser! Passen wir die Endposition
+noch ein wenig mehr an.
+
+11
+00:02:00.000 --> 00:02:05.600
+Es ist ein Prozess, aber um das beste Ergebnis zu erzielen,
+feintunen, bis Sie den bestklingenden Loop haben.
+
+12
+00:02:13.266 --> 00:02:19.933
+Noch eine kleine Anpassung, und wir sollten es haben.
+
+13
+00:02:27.716 --> 00:02:32.716
+Perfekt! Jetzt loopt der Audioclip nahtlos.
+
+14
+00:02:38.716 --> 00:02:43.716
+Wenn Sie zufrieden sind, klicken Sie auf Audio-Clip speichern
+und speichern Sie Ihre neue 'pagefile.sys'-Datei.
+
+15
+00:02:46.766 --> 00:02:55.050
+Sie können die Datei nun in Ihren '/Resources'-Ordner
+auf der SD-Karte kopieren. Viel Spaß!

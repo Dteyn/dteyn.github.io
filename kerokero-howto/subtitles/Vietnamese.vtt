@@ -1,0 +1,75 @@
+WEBVTT
+
+1
+00:00:01.000 --> 00:00:07.433
+Chọn tệp âm thanh (.mp3, .wav)
+
+2
+00:00:10.000 --> 00:00:15.000
+Xem trước âm thanh, điều chỉnh gain nếu cần
+
+3
+00:00:17.666 --> 00:00:25.550
+Đánh dấu điểm 'In' nơi vòng lặp nên bắt đầu
+
+4
+00:00:28.716 --> 00:00:35.366
+Nếu bạn bỏ lỡ, nhấp Dừng và sau đó
+nhấp Phát để thử lại cho đến khi bạn hài lòng
+với điểm 'In'.
+
+5
+00:00:39.500 --> 00:00:47.833
+Sau đó, khi đến điểm trong âm thanh mà bạn
+muốn lặp lại, nhấp 'Mark Out' để đánh dấu
+kết thúc của âm thanh. Clip có thể tối đa 90 giây.
+
+6
+00:00:52.033 --> 00:00:59.766
+Trong ví dụ này, tôi đã cố ý nhấp 'Mark Out'
+muộn hơn một chút để cho thấy cách điều chỉnh.
+
+7
+00:01:03.433 --> 00:01:12.266
+Bây giờ chúng ta sẽ xem trước để xem quá trình
+chuyển tiếp vòng lặp nghe như thế nào. Đây là cách nó
+sẽ phát trên thiết bị khi lặp lại.
+
+8
+00:01:14.600 --> 00:01:21.933
+Vòng lặp hơi lệch. Nghe như kết thúc quá muộn.
+Vì vậy, tôi sẽ điều chỉnh 'End Position' để
+clip kết thúc sớm hơn.
+
+9
+00:01:30.000 --> 00:01:37.666
+Bây giờ tôi nhận thấy nó cũng bắt đầu quá sớm.
+Vì vậy, tôi sẽ điều chỉnh 'Start Position' cho phù hợp.
+
+10
+00:01:46.783 --> 00:01:52.050
+Gần hơn rồi! Hãy điều chỉnh 'End Position'
+thêm một chút.
+
+11
+00:02:00.000 --> 00:02:05.600
+Đây là một quá trình, nhưng để có kết quả tốt nhất,
+hãy tinh chỉnh cho đến khi bạn có vòng lặp nghe tốt nhất.
+
+12
+00:02:13.266 --> 00:02:19.933
+Một điều chỉnh nhỏ nữa và chúng ta sẽ hoàn thành.
+
+13
+00:02:27.716 --> 00:02:32.716
+Hoàn hảo!! Bây giờ clip âm thanh lặp lại một cách liền mạch.
+
+14
+00:02:38.716 --> 00:02:43.716
+Khi bạn hài lòng, nhấp vào Lưu Clip Âm Thanh
+và lưu tệp 'pagefile.sys' mới của bạn.
+
+15
+00:02:46.766 --> 00:02:55.050
+Bạn có thể sao chép tệp vào thư mục '/Resources'
+trên thẻ SD của bạn. Thưởng thức!!

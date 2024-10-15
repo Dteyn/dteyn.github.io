@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:01.000 --> 00:00:07.433
+Selecciona el archivo de audio (.mp3, .wav)
+
+2
+00:00:10.000 --> 00:00:15.000
+Previsualiza el audio, ajusta la ganancia si es necesario
+
+3
+00:00:17.666 --> 00:00:25.550
+Marca el punto 'In' donde debería comenzar el bucle
+
+4
+00:00:28.716 --> 00:00:35.366
+Si te equivocaste, haz clic en Detener y luego en Reproducir
+para intentarlo de nuevo hasta que estés satisfecho con el punto 'In'.
+
+5
+00:00:39.500 --> 00:00:47.833
+Luego, cuando llegue el punto en el audio donde quieres
+que se repita el bucle, haz clic en 'Mark Out' para marcar
+el final del audio. Los clips pueden tener un máximo de 90 segundos.
+
+6
+00:00:52.033 --> 00:00:59.766
+En este ejemplo, hice clic en 'Mark Out' un poco
+tarde a propósito, para mostrar cómo se puede ajustar.
+
+7
+00:01:03.433 --> 00:01:12.266
+Ahora previsualizaremos para ver cómo suena
+la transición del bucle. Así es como sonará en el dispositivo
+cuando se repita.
+
+8
+00:01:14.600 --> 00:01:21.933
+El bucle está un poco desfasado. Parece que termina
+demasiado tarde. Entonces, ajustaré la 'End Position'
+para que el clip termine antes.
+
+9
+00:01:30.000 --> 00:01:37.666
+Ahora puedo decir que también comienza demasiado pronto.
+Así que ajustaré la 'Start Position' en consecuencia.
+
+10
+00:01:46.783 --> 00:01:52.050
+¡Mucho mejor! Ajustemos un poco más la 'End Position'.
+
+11
+00:02:00.000 --> 00:02:05.600
+Es un proceso, pero para obtener el mejor resultado,
+ajusta hasta conseguir el mejor bucle sonoro.
+
+12
+00:02:13.266 --> 00:02:19.933
+Un pequeño ajuste más y deberíamos tenerlo.
+
+13
+00:02:27.716 --> 00:02:32.716
+¡Perfecto! Ahora el clip de audio se repite sin problemas.
+
+14
+00:02:38.716 --> 00:02:43.716
+Cuando estés satisfecho, haz clic en Guardar Clip de Audio
+y guarda tu nuevo archivo 'pagefile.sys'.
+
+15
+00:02:46.766 --> 00:02:55.050
+Ahora puedes copiar el archivo en tu carpeta
+'/Resources' en la tarjeta SD. ¡Disfruta!

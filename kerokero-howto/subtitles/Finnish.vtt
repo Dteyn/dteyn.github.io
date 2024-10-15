@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:01.000 --> 00:00:07.433
+Valitse äänitiedosto (.mp3, .wav)
+
+2
+00:00:10.000 --> 00:00:15.000
+Esikatselu ääni, säädä voimakkuutta tarvittaessa
+
+3
+00:00:17.666 --> 00:00:25.550
+Merkitse 'Sisään' kohta, josta loopin tulee alkaa
+
+4
+00:00:28.716 --> 00:00:35.366
+Jos epäonnistuit, klikkaa Pysäytä ja sitten Toista
+uudelleen, kunnes olet tyytyväinen 'Sisään' kohtaan.
+
+5
+00:00:39.500 --> 00:00:47.833
+Sitten, kun saavut kohtaan, johon haluat loopin
+päättyvän, klikkaa 'Merkitse Ulos' merkitäksesi
+äänen lopun. Leikkeet voivat olla enintään 90 sekuntia.
+
+6
+00:00:52.033 --> 00:00:59.766
+Tässä esimerkissä klikkasin 'Merkitse Ulos' hieman
+liian myöhään tahallaan näyttääkseni, miten sitä voi säätää.
+
+7
+00:01:03.433 --> 00:01:12.266
+Nyt esikatsellaan, miltä loopin siirtymä kuulostaa.
+Näin se kuulostaa laitteessa, kun se toistuu.
+
+8
+00:01:14.600 --> 00:01:21.933
+Looppi on hieman pielessä. Kuulostaa siltä, että se
+päättyy liian myöhään. Joten säädän 'Loppupistettä'
+niin, että leike päättyy aiemmin.
+
+9
+00:01:30.000 --> 00:01:37.666
+Nyt huomaan, että se alkaa myös liian aikaisin.
+Joten säädän 'Aloituspistettä' vastaavasti.
+
+10
+00:01:46.783 --> 00:01:52.050
+Paljon parempi! Säädetään loppupistettä
+vielä hieman.
+
+11
+00:02:00.000 --> 00:02:05.600
+Se on prosessi, mutta parhaan tuloksen saamiseksi,
+hienosäädä, kunnes saat parhaan mahdollisen loopin.
+
+12
+00:02:13.266 --> 00:02:19.933
+Vielä yksi pieni säätö, ja sen pitäisi olla valmis.
+
+13
+00:02:27.716 --> 00:02:32.716
+Täydellistä!! Nyt äänileike looppaantuu saumattomasti.
+
+14
+00:02:38.716 --> 00:02:43.716
+Kun olet tyytyväinen, klikkaa Tallenna äänileike
+ja tallenna uusi 'pagefile.sys' tiedostosi.
+
+15
+00:02:46.766 --> 00:02:55.050
+Voit nyt kopioida tiedoston '/Resources'
+-kansioosi SD-kortilla. Nauti!!

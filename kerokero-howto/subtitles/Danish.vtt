@@ -1,0 +1,74 @@
+WEBVTT
+
+1
+00:00:01.000 --> 00:00:07.433
+Vælg lydfil (.mp3, .wav)
+
+2
+00:00:10.000 --> 00:00:15.000
+Forhåndsvis lyden, juster gain om nødvendigt
+
+3
+00:00:17.666 --> 00:00:25.550
+Markér 'Ind'-punktet, hvor loopen skal begynde
+
+4
+00:00:28.716 --> 00:00:35.366
+Hvis du missede, klik på Stop og derefter Afspil
+igen, indtil du er tilfreds med 'Ind'-punktet.
+
+5
+00:00:39.500 --> 00:00:47.833
+Derefter, når punktet i lyden kommer, hvor du
+ønsker, at den skal loope, klik på 'Mark Out' for at markere
+slutningen af lyden. Klip kan være maksimalt 90 sekunder.
+
+6
+00:00:52.033 --> 00:00:59.766
+I dette eksempel klikkede jeg på 'Mark Out' lidt
+for sent med vilje for at vise, hvordan det kan justeres.
+
+7
+00:01:03.433 --> 00:01:12.266
+Nu vil vi forhåndsvise for at se, hvordan
+loop-overgangen lyder. Sådan vil det lyde
+på enheden, når det loopes.
+
+8
+00:01:14.600 --> 00:01:21.933
+Loopen er lidt off. Det lyder som om den slutter
+for sent. Så jeg vil justere 'Slutposition',
+så klippet slutter tidligere.
+
+9
+00:01:30.000 --> 00:01:37.666
+Nu kan jeg se, at den også starter for tidligt.
+Så jeg vil justere 'Startposition' tilsvarende.
+
+10
+00:01:46.783 --> 00:01:52.050
+Meget bedre! Lad os justere slutpositionen
+lidt mere.
+
+11
+00:02:00.000 --> 00:02:05.600
+Det er en proces, men for at få det bedste resultat,
+finjustér, indtil du får den bedst lydende loop.
+
+12
+00:02:13.266 --> 00:02:19.933
+En lille justering mere, så skulle den være der.
+
+13
+00:02:27.716 --> 00:02:32.716
+Perfekt!! Nu looper lydklippet problemfrit.
+
+14
+00:02:38.716 --> 00:02:43.716
+Når du er tilfreds, klik på Gem lydklip
+og gem din nye 'pagefile.sys'-fil.
+
+15
+00:02:46.766 --> 00:02:55.050
+Du kan nu kopiere filen til din '/Resources'-
+mappe på SD-kortet. God fornøjelse!!

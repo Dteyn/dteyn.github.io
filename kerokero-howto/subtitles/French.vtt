@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:01.000 --> 00:00:07.433
+Sélectionnez le fichier audio (.mp3, .wav)
+
+2
+00:00:10.000 --> 00:00:15.000
+Prévisualisez l'audio, ajustez le gain si nécessaire
+
+3
+00:00:17.666 --> 00:00:25.550
+Marquez le point 'In' où la boucle doit commencer
+
+4
+00:00:28.716 --> 00:00:35.366
+Si vous avez manqué, cliquez sur Arrêter puis sur
+Lire pour réessayer jusqu'à être satisfait du point 'In'.
+
+5
+00:00:39.500 --> 00:00:47.833
+Ensuite, lorsque le point dans l'audio que vous
+souhaitez boucler arrive, cliquez sur 'Mark Out' pour marquer
+la fin de l'audio. Les clips peuvent durer au maximum 90 secondes.
+
+6
+00:00:52.033 --> 00:00:59.766
+Dans cet exemple, j'ai cliqué sur 'Mark Out' un peu
+trop tard exprès, pour montrer comment on peut l'ajuster.
+
+7
+00:01:03.433 --> 00:01:12.266
+Nous allons maintenant prévisualiser pour voir comment
+la transition de la boucle sonne. C'est ainsi que cela sonnera
+sur l'appareil lorsqu'elle se répétera.
+
+8
+00:01:14.600 --> 00:01:21.933
+La boucle est un peu décalée. On dirait qu'elle se termine
+trop tard. Je vais donc ajuster la 'End Position'
+pour que le clip se termine plus tôt.
+
+9
+00:01:30.000 --> 00:01:37.666
+Maintenant, je remarque qu'elle commence aussi trop tôt.
+Je vais donc ajuster la 'Start Position' en conséquence.
+
+10
+00:01:46.783 --> 00:01:52.050
+Beaucoup mieux ! Ajustons encore un peu la 'End Position'.
+
+11
+00:02:00.000 --> 00:02:05.600
+C'est un processus, mais pour obtenir le meilleur résultat,
+affinez jusqu'à obtenir la meilleure boucle sonore.
+
+12
+00:02:13.266 --> 00:02:19.933
+Encore un petit ajustement et nous y serons.
+
+13
+00:02:27.716 --> 00:02:32.716
+Parfait !! Maintenant, le clip audio boucle parfaitement.
+
+14
+00:02:38.716 --> 00:02:43.716
+Lorsque vous êtes satisfait, cliquez sur Enregistrer le Clip Audio
+et enregistrez votre nouveau fichier 'pagefile.sys'.
+
+15
+00:02:46.766 --> 00:02:55.050
+Vous pouvez maintenant copier le fichier dans votre dossier
+'/Resources' sur la carte SD. Profitez-en !!
