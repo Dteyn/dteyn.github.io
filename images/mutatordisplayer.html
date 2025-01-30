@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>ATF Daily Mutators</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /*
+          ==========================================================
+          =                    Global & Body Styles               =
+          ==========================================================
+        */
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            transition: background 0.3s, color 0.3s;
+            background: #f0f0f0;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Light & Dark Mode toggles */
+        body.dark-mode {
+            background: #1e1e1e;
+            color: #ddd;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007eff;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1rem;
+            flex: 1;
+            box-sizing: border-box;
+        }
+
+        /*
+          ==========================================================
+          =                   Header Section                       =
+          ==========================================================
+        */
+        h1 {
+            text-align: center;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .top-bar h2 {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+
+        /*
+          ==========================================================
+          =                    Hamburger Menu                      =
+          ==========================================================
+        */
+        .hamburger {
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .bar {
+            width: 100%;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .hamburger.open .bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .hamburger.open .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open .bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .slide-menu {
+            position: fixed;
+            top: 0;
+            right: -300px; /* fully hidden when closed */
+            width: 300px;
+            height: 100%;
+            background: #fff;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+            padding: 1rem;
+            transition: right 0.3s;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+        .slide-menu.open {
+            right: 0;
+        }
+        body.dark-mode .slide-menu {
+            background: #2b2b2b;
+        }
+
+        /* Button to close the menu (top-left corner inside the menu) */
+        .close-menu-btn {
+            align-self: flex-start;
+            background: #007eff;
+            color: #fff;
+            border: none;
+            padding: 0.3rem 0.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+        }
+        .close-menu-btn:hover {
+            background: #005fcc;
+        }
+
+        .slide-menu h3 {
+            margin-top: 0;
+        }
+        .menu-section {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.5rem;
+        }
+        body.dark-mode .menu-section {
+            border-color: #444;
+        }
+
+        /*
+          ==========================================================
+          =                   Time Range Filters                   =
+          ==========================================================
+        */
+        .time-filter-section {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.5rem;
+        }
+        body.dark-mode .time-filter-section {
+            border-color: #444;
+        }
+
+        .time-filter-section label {
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .hour-select {
+            margin-right: 1rem;
+        }
+
+        /*
+          ==========================================================
+          =                    Filter Checkboxes                   =
+          ==========================================================
+        */
+        .filter-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.3rem;
+        }
+        .filter-item input[type="checkbox"] {
+            margin-right: 0.5rem;
+            transform: scale(1.2);
+        }
+
+        /*
+          ==========================================================
+          =                     Daily List                         =
+          ==========================================================
+        */
+        .daily-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            background: #fff;
+            border-radius: 8px;
+            padding: 0.75rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        body.dark-mode .daily-list {
+            background: #2d2d2d;
+        }
+
+        /*
+          Each "mutator-block" has 4 pills:
+            (Time Pill) (Icons Pill) (Level Pill) (Mutator Pill)
+        */
+        .mutator-block {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            gap: 0.5rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .pill {
+            border-radius: 9999px; /* pill shape */
+            padding: 0.3rem 0.7rem;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
+        }
+        body.dark-mode .pill {
+            background: #3a3a3a;
+            box-shadow: none;
+        }
+
+        .time-pill {
+            font-weight: bold;
+            background: #e2e2e2;
+        }
+        body.dark-mode .time-pill {
+            background: #555;
+        }
+
+        .icons-pill {
+            gap: 0.5rem;
+        }
+
+        .icon-box {
+            background: #333 !important; /* remains charcoal in both light/dark mode */
+            padding: 5px;
+            border: 2px solid #33ffff;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .icon-box img {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+        }
+
+        .level-pill {
+            font-weight: 600;
+        }
+        .mutator-pill {
+            font-style: italic;
+        }
+
+        /* The active (current) block bounding box: more visible yellow highlight */
+        .current-block {
+            background-color: #fffda7;
+            outline: 1px solid #e8de00;
+            outline-offset: -3px;
+        }
+
+        /*
+          Color-coded classes for levels (with underscores).
+          We color the .level-pill for quick scanning.
+        */
+        .level-Skidrow            .level-pill { background: #ffebc2 !important; }
+        .level-Quarantine_Center  .level-pill { background: #dcecf8 !important; }
+        .level-Union_Tower        .level-pill { background: #ffe5e5 !important; }
+        .level-Chinatown          .level-pill { background: #ffeecf !important; }
+        .level-The_Relay          .level-pill { background: #e8ffe1 !important; }
+        .level-Boulevard          .level-pill { background: #f9ffe8 !important; }
+        .level-Downtown           .level-pill { background: #f3defe !important; }
+        .level-Subway             .level-pill { background: #f9c6c9 !important; }
+        .level-Hospital           .level-pill { background: #d8f2ea !important; }
+
+        /*
+          Borders for mutators on the .mutator-pill
+        */
+        .mutator-SpeedRunner    .mutator-pill { border: 2px solid #ecb939; }
+        .mutator-GunSlinger     .mutator-pill { border: 2px solid #72cce8; }
+        .mutator-SnappingTurtle .mutator-pill { border: 2px solid #e872bd; }
+        .mutator-CrowdControl   .mutator-pill { border: 2px solid #97ec72; }
+        .mutator-SnowPlow       .mutator-pill { border: 2px solid #b588ff; }
+
+        /*
+          ==========================================================
+          =         Overlay Panels for Help & About                =
+          ==========================================================
+        */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            display: none; /* hidden by default */
+            align-items: center;
+            justify-content: center;
+        }
+        .overlay.open {
+            display: flex;
+        }
+
+        .panel {
+            background: #fff;
+            color: #333;
+            max-width: 90%;
+            max-height: 80%;
+            overflow-y: auto;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        body.dark-mode .panel {
+            background: #2d2d2d;
+            color: #ddd;
+        }
+
+        .panel-close {
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: inherit;
+        }
+
+        .panel h2 {
+            margin-top: 0;
+        }
+
+        /*
+          ==========================================================
+          =                   Footer Section                       =
+          ==========================================================
+        */
+        .footer {
+            text-align: center;
+            padding: 0.5rem;
+            background: #f0f0f0;
+            border-top: 1px solid #ccc;
+        }
+        body.dark-mode .footer {
+            background: #2d2d2d;
+            border-color: #444;
+        }
+        .footer .footer-btn {
+            margin-left: 1rem;
+            padding: 0.25rem 0.5rem;
+            background: #007eff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .footer .footer-btn:hover {
+            background: #005fcc;
+        }
+
+        /*
+          ==========================================================
+          =                  Navigation Buttons                   =
+          ==========================================================
+        */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+        }
+        .nav-buttons button {
+            background: #007eff;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            transition: background 0.3s;
+        }
+        .nav-buttons button:hover {
+            background: #005fcc;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Page Title -->
+    <h1>After the Fall - Mutator Listing</h1>
+
+    <!-- Display the current active mutator info at a glance -->
+    <div id="activeMutatorDisplay" style="font-weight: bold; margin-bottom: 1rem;">
+        <!-- Populated by JS; e.g. "Active Mutator: 10:00 AM - Hospital - SpeedRunner" -->
+    </div>
+
+    <!-- Top Bar with Title and Hamburger -->
+    <div class="top-bar">
+        <h2 id="viewTitle">Today's Mutators</h2>
+        <div class="hamburger" id="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+
+    <!-- Slide-out Menu -->
+    <div class="slide-menu" id="slideMenu">
+        <!-- A close button at top-left inside the menu -->
+        <button class="close-menu-btn" id="closeMenuBtn">Close</button>
+
+        <!-- Time Range Filter Section -->
+        <div class="menu-section time-filter-section">
+            <h3>Time Range</h3>
+            <!-- Instead of numeric fields, we use two dropdowns: fromHourSelect & toHourSelect -->
+            <label>From:
+                <select id="fromHourSelect" class="hour-select"></select>
+            </label>
+            <label>To:
+                <select id="toHourSelect" class="hour-select"></select>
+            </label>
+        </div>
+
+        <!-- View Mode Section -->
+        <div class="menu-section">
+            <h3>View Mode</h3>
+            <p>Currently: Daily</p>
+            <!-- Dark Mode Checkbox under "View Mode" -->
+            <div style="margin-top:0.5rem;">
+                <input type="checkbox" id="modeToggle" />
+                <label for="modeToggle">Dark Mode</label>
+            </div>
+        </div>
+
+        <!-- Filters Section (Levels + Mutators) -->
+        <div class="menu-section">
+            <h3>Filters</h3>
+            <div id="filtersContainer">
+                <!-- Checkboxes for Levels & Mutators are injected here by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlays for Help & About -->
+    <div class="overlay" id="helpPanel">
+        <div class="panel">
+            <button class="panel-close" onclick="closePanel('helpPanel')">X</button>
+            <h2>Help</h2>
+            <p>This tool displays daily (2-hour blocks) mutators for ATF.
+                Swipe or click arrows to change days.
+                Filter by level/mutator, choose your time range, and pick 24-hour or AM/PM display.
+            </p>
+            <ul>
+                <li><strong>SpeedRunner</strong>: Fast-paced movement</li>
+                <li><strong>GunSlinger</strong>: High firepower</li>
+                <li><strong>SnappingTurtle</strong>: Defensive boost</li>
+                <li><strong>CrowdControl</strong>: Handling hordes</li>
+                <li><strong>SnowPlow</strong>: Heavy damage</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="overlay" id="aboutPanel">
+        <div class="panel">
+            <button class="panel-close" onclick="closePanel('aboutPanel')">X</button>
+            <h2>About</h2>
+            <p>This is a hobby project by [Your Name].</p>
+            <p>Links:</p>
+            <ul>
+                <li><a href="https://github.com/YourUsername" target="_blank">GitHub</a></li>
+                <li><a href="https://ko-fi.com/YourKoFiPage" target="_blank">Ko-Fi</a></li>
+                <li><a href="https://twitter.com/YourTwitter" target="_blank">Twitter</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons (Previous/Next Day) -->
+    <div class="nav-buttons">
+        <button id="prevDayBtn">&laquo; Previous Day</button>
+        <button id="nextDayBtn">Next Day &raquo;</button>
+    </div>
+
+    <!-- List of 2-hour mutator blocks for the day -->
+    <div class="daily-list" id="dailyList">
+        <!-- Items are injected by JS -->
+    </div>
+
+</div> <!-- /.container -->
+
+<!-- Footer Section -->
+<div class="footer">
+    <span>Created by Dteyn</span>
+    <!-- Add Help and About buttons here -->
+    <button class="footer-btn" onclick="openPanel('helpPanel')">Help</button>
+    <button class="footer-btn" onclick="openPanel('aboutPanel')">About</button>
+</div>
+
+<script>
+    /*
+      ==========================================================
+      =     1) Base64 + Arrays + Index Calculation            =
+      ==========================================================
+    */
+    function _dA(b){return atob(b).split(",").map(function(n){return+ n})}
+    function _dS(b){return atob(b).split(",")}
+
+    // Arrays from your Python logic
+    const g1="MCw2LDEsNiw1LDQsMSw3LDQsOCwzLDAsMiw3LDEsNywzLDAsOCw0LDYsMiw3LDAsNA==",
+        g2="MSw4LDMsNywyLDcsMCwyLDcsMiw3LDQsMCwzLDEsMiwzLDgsNCw4LDMsMiwzLDQsMQ==",
+        g3="NCw4LDYsNSw2LDUsMCw0LDgsMywyLDEsMCw2LDQsMiw2LDMsOCw1LDcsMiw0LDIsMQ==",
+        g4="NiwzLDIsOCw3LDQsMCwzLDYsMSw0LDYsNCwxLDMsNiw4LDUsMiw4LDYsNSwzLDYsNw==";
+    const GL = _dA(g1).concat(_dA(g2), _dA(g3), _dA(g4)); // gameplayLevelsIdxList
+
+    const m1="NCwwLDIsNCwwLDMsMCwxLDAsMywxLDMsNCwxLDMsMSwyLDMsMCwyLDAsMywxLDIsMA==",
+        m2="MiwxLDAsNCwzLDQsMSwwLDEsNCwwLDMsMSwyLDAsMywxLDIsMSwyLDAsMywxLDAsNA==",
+        m3="MSwzLDAsNCwzLDIsMCwxLDMsMSwzLDIsMSw0LDAsMiwxLDMsMSwyLDAsMSw0LDEsMA==",
+        m4="MywyLDMsMCwyLDMsMSw0LDAsNCwyLDQsMiwwLDIsMCwyLDAsMiwwLDIsMCwyLDMsNCwxLDI=";
+    const MP = _dA(m1).concat(_dA(m2), _dA(m3), _dA(m4)); // mutatorPackageIdxList
+
+    const pl="U2tpZHJvdyxRdWFyYW50aW5lIENlbnRlcixVbmlvbiBUb3dlcixDaGluYXRvd24sVGhlIFJlbGF5LEJvdWxldmFyZCxEb3dudG93bixTdWJ3YXksSG9zcGl0YWw=",
+        pm="U3BlZWRSdW5uZXIsR3VuU2xpbmdlcixTbmFwcGluZ1R1cnRsZSxDcm93ZENvbnRyb2wsU25vd1Bsb3c=";
+    const LEVELS = _dS(pl);
+    const MUTATORS = _dS(pm);
+
+    /**
+     * Convert a Date to the "mutator index" by .NET-based logic:
+     * ( minutesSinceEpoch // 120 ) % 100
+     */
+    function computeIndexForDate(dateObj) {
+        const msPerMin = 60000;
+        const offsetDays = 719162;
+        const offsetMin = offsetDays * 1440;
+        const totalMin = Math.floor(dateObj.getTime() / msPerMin) + offsetMin;
+        return Math.floor(totalMin / 120) % 100;
+    }
+
+    function getMutatorForDate(dateObj) {
+        const idx = computeIndexForDate(dateObj);
+        const lvlId = GL[idx];
+        const mutId = MP[idx];
+        return {
+            level: LEVELS[lvlId],
+            mutator: MUTATORS[mutId]
+        };
+    }
+
+    /**
+     * Replace spaces with underscores for valid CSS class tokens.
+     */
+    function sanitizeClassName(str) {
+        return str.replace(/\s+/g, "_");
+    }
+
+    /*
+      ==========================================================
+      =         2) Global Variables & DOM Access              =
+      ==========================================================
+    */
+    const dailyListEl = document.getElementById("dailyList");
+    const activeMutatorDisplay = document.getElementById("activeMutatorDisplay");
+
+    // Our “current date” we’re viewing
+    let currentDate = new Date();
+
+    // The user can select from/to hours, so let's store references
+    const fromHourSelect = document.getElementById("fromHourSelect");
+    const toHourSelect = document.getElementById("toHourSelect");
+
+    // Checkbox for 24-hour display
+    // (In your spec, you said "Use 24-Hour Time" wasn't working, so we'll fix by re-rendering on change.)
+    const formatToggle = document.createElement("input"); // We will parse from the DOM? Actually we put it in code?
+    // Actually we see there's an #modeToggle for Dark Mode, not for 24-hour. We'll add a new ID for 24-hour
+    // but let's just do a quick fix: let's do it in code.
+    // Actually we want to do it in the code below.
+
+
+    // Instead, let's do a separate approach: We'll store a global is24Hour boolean or read from a new checkbox.
+    // We'll define that in code. But let's do it simpler: we'll define a new ID "timeFormatToggle" in the markup for 24-hour toggling.
+
+    /*
+      ==========================================================
+      =         3) Render the Day & Active Mutator            =
+      ==========================================================
+    */
+    function renderDailyView(dateObj) {
+        dailyListEl.innerHTML = ""; // clear previous
+
+        // We’ll also track which block is currently active (if it's today).
+        let activeBlockInfo = null;
+
+        // Show 12 blocks (0,2,4,...,22)
+        for(let hour=0; hour<24; hour+=2) {
+            const blockDate = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate(), hour, 0, 0);
+            const { level, mutator } = getMutatorForDate(blockDate);
+
+            // Container
+            const row = document.createElement("div");
+            row.classList.add("mutator-block");
+            // store hour as data-hour for filtering
+            row.dataset.hour = hour;
+
+            // Classes for color
+            row.classList.add("level-" + sanitizeClassName(level));
+            row.classList.add("mutator-" + sanitizeClassName(mutator));
+
+            // If it’s the current real-life block, highlight and store for top display
+            const now = new Date();
+            if (isSameDay(dateObj, now)) {
+                const currentHour = now.getHours();
+                if (currentHour >= hour && currentHour < hour + 2) {
+                    row.classList.add("current-block");
+                    activeBlockInfo = { hour, level, mutator };
+                }
+            }
+
+            // 1) Time Pill
+            const timePill = document.createElement("div");
+            timePill.classList.add("pill", "time-pill");
+            timePill.textContent = formatHour(hour, getIs24Hour());
+
+            // 2) Icons Pill
+            const iconsPill = document.createElement("div");
+            iconsPill.classList.add("pill", "icons-pill");
+
+            // Level icon
+            const levelIconBox = document.createElement("div");
+            levelIconBox.classList.add("icon-box");
+            const levelImg = document.createElement("img");
+            levelImg.src = `icons/${sanitizeClassName(level)}.png`;
+            levelImg.alt = `${level} Icon`;
+            levelIconBox.appendChild(levelImg);
+
+            // Mutator icon
+            const mutIconBox = document.createElement("div");
+            mutIconBox.classList.add("icon-box");
+            const mutImg = document.createElement("img");
+            mutImg.src = `icons/${sanitizeClassName(mutator)}.png`;
+            mutImg.alt = `${mutator} Icon`;
+            mutIconBox.appendChild(mutImg);
+
+            iconsPill.appendChild(levelIconBox);
+            iconsPill.appendChild(mutIconBox);
+
+            // 3) Level Pill
+            const levelPill = document.createElement("div");
+            levelPill.classList.add("pill", "level-pill");
+            levelPill.textContent = level;
+
+            // 4) Mutator Pill
+            const mutPill = document.createElement("div");
+            mutPill.classList.add("pill", "mutator-pill");
+            mutPill.textContent = mutator;
+
+            // Append to row
+            row.appendChild(timePill);
+            row.appendChild(iconsPill);
+            row.appendChild(levelPill);
+            row.appendChild(mutPill);
+
+            dailyListEl.appendChild(row);
+        }
+
+        // Heading
+        document.getElementById("viewTitle").textContent = `${dateObj.toDateString()}'s Mutators`;
+
+        // If we found an active block, display it at the top
+        if (activeBlockInfo) {
+            const { hour, level, mutator } = activeBlockInfo;
+            activeMutatorDisplay.textContent = `Active Mutator: ${formatHour(hour, getIs24Hour())} - ${level} - ${mutator}`;
+        } else {
+            // Otherwise, if it's not "today" or there's no active block
+            activeMutatorDisplay.textContent = "";
+        }
+
+        // Finally, apply filters (time range + level/mutator checkboxes)
+        applyFilters();
+    }
+
+    function isSameDay(d1, d2) {
+        return d1.getFullYear() === d2.getFullYear() &&
+            d1.getMonth() === d2.getMonth() &&
+            d1.getDate() === d2.getDate();
+    }
+
+    /** Return true if the user has selected 24-hour format. */
+    function getIs24Hour() {
+        return document.getElementById("timeFormatToggle")?.checked || false;
+    }
+
+    /** Format hour for either 24h or AM/PM. */
+    function formatHour(hour, is24) {
+        if (is24) {
+            return hour.toString().padStart(2, "0") + ":00";
+        } else {
+            let suffix = hour < 12 ? "AM" : "PM";
+            let displayHour = hour % 12;
+            if (displayHour === 0) displayHour = 12;
+            return `${displayHour}:00 ${suffix}`;
+        }
+    }
+
+    /**
+     * Shift the date by +/- 1 day, then re-render.
+     */
+    function shiftDay(delta) {
+        currentDate.setDate(currentDate.getDate() + delta);
+        autoAdjustTimeRangeIfToday();
+        renderDailyView(currentDate);
+    }
+
+    /*
+      ==========================================================
+      =    4) Time Range, Checkboxes, and Filtering Logic      =
+      ==========================================================
+    */
+    function applyFilters() {
+        // Gather from/to from the dropdowns
+        const fromHour = parseInt(fromHourSelect.value, 10);
+        const toHour   = parseInt(toHourSelect.value, 10);
+
+        // Gather level/mutator checkboxes
+        const levelCheckboxes = document.querySelectorAll("#filtersContainer .filter-item input[type='checkbox']");
+        let allowedLevels = [];
+        let allowedMutators = [];
+
+        levelCheckboxes.forEach(chk => {
+            const val = chk.value;
+            if (LEVELS.includes(val) && chk.checked) {
+                allowedLevels.push(val);
+            } else if (MUTATORS.includes(val) && chk.checked) {
+                allowedMutators.push(val);
+            }
+        });
+
+        // Hide or show each .mutator-block
+        const blocks = document.querySelectorAll(".mutator-block");
+        blocks.forEach(block => {
+            const classes = Array.from(block.classList);
+            let foundLevel = null, foundMut = null;
+            for (const c of classes) {
+                if (c.startsWith("level-")) {
+                    foundLevel = c.replace("level-","");
+                } else if (c.startsWith("mutator-")) {
+                    foundMut = c.replace("mutator-","");
+                }
+            }
+            // revert underscores
+            foundLevel = foundLevel ? foundLevel.replace(/_/g, " ") : "";
+            foundMut   = foundMut   ? foundMut.replace(/_/g, " ") : "";
+
+            // time range check
+            const blockHour = parseInt(block.dataset.hour, 10);
+            const inTimeRange = (blockHour >= fromHour && blockHour < toHour);
+
+            const visible =
+                allowedLevels.includes(foundLevel) &&
+                allowedMutators.includes(foundMut) &&
+                inTimeRange;
+
+            block.style.display = visible ? "" : "none";
+        });
+    }
+
+    /**
+     * Fills the fromHourSelect and toHourSelect with options 0..24.
+     * We also add a separate "timeFormatToggle" checkbox in the menu
+     * to do live re-render of hours.
+     */
+    function setupTimeSelectors() {
+        for (let h=0; h<=24; h++) {
+            const optFrom = document.createElement("option");
+            optFrom.value = h;
+            optFrom.textContent = h;
+            fromHourSelect.appendChild(optFrom);
+
+            const optTo = document.createElement("option");
+            optTo.value = h;
+            optTo.textContent = h;
+            toHourSelect.appendChild(optTo);
+        }
+        // default from=0, to=24
+        fromHourSelect.value = "0";
+        toHourSelect.value   = "24";
+
+        // Listen for changes => re-run applyFilters
+        fromHourSelect.addEventListener("change", () => { applyFilters(); });
+        toHourSelect.addEventListener("change", () => { applyFilters(); });
+    }
+
+    /**
+     * If viewing 'today', set the 'from' dropdown to the *current* 2-hour block
+     * so expired blocks are hidden by default.
+     * If it's not today, default to 0..24.
+     */
+    function autoAdjustTimeRangeIfToday() {
+        const now = new Date();
+        if (isSameDay(currentDate, now)) {
+            const h = now.getHours();
+            // find the 2-hour block start => floor to even?
+            const blockStart = h - (h % 2);
+            fromHourSelect.value = blockStart;
+            toHourSelect.value   = "24";
+        } else {
+            // not today => show full range
+            fromHourSelect.value = "0";
+            toHourSelect.value   = "24";
+        }
+    }
+
+    /*
+      ==========================================================
+      =         5) Filter Checkboxes for Levels/Mutators       =
+      ==========================================================
+    */
+    function createFilters() {
+        const container = document.getElementById("filtersContainer");
+        container.innerHTML = "";
+
+        // Levels
+        const lvlHeader = document.createElement("h4");
+        lvlHeader.textContent = "Levels";
+        container.appendChild(lvlHeader);
+
+        LEVELS.forEach(lvl => {
+            const div = document.createElement("div");
+            div.classList.add("filter-item");
+
+            const chk = document.createElement("input");
+            chk.type = "checkbox";
+            chk.value = lvl;
+            chk.checked = true;
+            chk.addEventListener("change", () => applyFilters());
+
+            const lbl = document.createElement("label");
+            lbl.textContent = lvl;
+
+            div.appendChild(chk);
+            div.appendChild(lbl);
+            container.appendChild(div);
+        });
+
+        // Mutators
+        const mutHeader = document.createElement("h4");
+        mutHeader.textContent = "Mutators";
+        container.appendChild(mutHeader);
+
+        MUTATORS.forEach(mut => {
+            const div = document.createElement("div");
+            div.classList.add("filter-item");
+
+            const chk = document.createElement("input");
+            chk.type = "checkbox";
+            chk.value = mut;
+            chk.checked = true;
+            chk.addEventListener("change", () => applyFilters());
+
+            const lbl = document.createElement("label");
+            lbl.textContent = mut;
+
+            div.appendChild(chk);
+            div.appendChild(lbl);
+            container.appendChild(div);
+        });
+    }
+
+    /*
+      ==========================================================
+      =          6) Slide Menu, Overlays, & Event Hooks        =
+      ==========================================================
+    */
+    const hamburger = document.getElementById("hamburger");
+    const slideMenu = document.getElementById("slideMenu");
+    const closeMenuBtn = document.getElementById("closeMenuBtn");
+
+    hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        slideMenu.classList.toggle("open");
+    });
+    closeMenuBtn.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        slideMenu.classList.toggle("open");
+    });
+
+    function openPanel(id) {
+        document.getElementById(id).classList.add("open");
+    }
+    function closePanel(id) {
+        document.getElementById(id).classList.remove("open");
+    }
+
+    /*
+      ==========================================================
+      =            7) Dark Mode & Day Navigation               =
+      ==========================================================
+    */
+    const modeToggle = document.getElementById("modeToggle");
+    modeToggle.addEventListener("change", () => {
+        document.body.classList.toggle("dark-mode", modeToggle.checked);
+    });
+
+    const prevDayBtn = document.getElementById("prevDayBtn");
+    const nextDayBtn = document.getElementById("nextDayBtn");
+    prevDayBtn.addEventListener("click", () => shiftDay(-1));
+    nextDayBtn.addEventListener("click", () => shiftDay(1));
+
+    // We'll add a new checkbox for 24-hour toggling.
+    // For simplicity, place it near the time range or at the top?
+    // We'll place it in time-filter-section as well.
+    // But let's do it in code => we can do it above the fromHourSelect:
+
+    const timeFormatToggle = document.createElement("input");
+    timeFormatToggle.type = "checkbox";
+    timeFormatToggle.id = "timeFormatToggle";
+    const timeFormatLabel = document.createElement("label");
+    timeFormatLabel.textContent = "Use 24-Hour Time";
+    timeFormatLabel.htmlFor = "timeFormatToggle";
+
+    // Insert them in the timeFilter
+    document.querySelector(".time-filter-section").appendChild(timeFormatToggle);
+    document.querySelector(".time-filter-section").appendChild(timeFormatLabel);
+
+    // Re-render day if user toggles 24-hour
+    timeFormatToggle.addEventListener("change", () => {
+        // re-render the day
+        renderDailyView(currentDate);
+    });
+
+    /*
+      ==========================================================
+      =                    8) Touch Swipes                     =
+      ==========================================================
+    */
+    let startX = null;
+    dailyListEl.addEventListener("touchstart", e => {
+        startX = e.touches[0].clientX;
+    });
+    dailyListEl.addEventListener("touchend", e => {
+        if (!startX) return;
+        let endX = e.changedTouches[0].clientX;
+        let diff = endX - startX;
+        if (Math.abs(diff) > 50) {
+            // Swipe left => next day
+            // Swipe right => previous day
+            if (diff < 0) shiftDay(1); else shiftDay(-1);
+        }
+        startX = null;
+    });
+
+    /*
+      ==========================================================
+      =                      9) Init                           =
+      ==========================================================
+    */
+    (function init(){
+        createFilters();             // Build checkboxes
+        setupTimeSelectors();        // Fill in 0..24 hour dropdowns
+        autoAdjustTimeRangeIfToday();
+        renderDailyView(currentDate);
+    })();
+</script>
+</body>
+</html>
