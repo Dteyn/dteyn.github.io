@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>farmertrue Discord Stream Schedule Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    #container { max-width: 650px; margin: auto; }
+    .week-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em; }
+    button { padding: 0.5em 1em; }
+    textarea { width: 100%; height: 330px; font-size: 1.1em; margin-top: 1em; }
+    #copied { color: green; font-weight: bold; display: none; }
+    label { font-size: 1.1em; }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h2>farmertrue Discord Schedule Generator</h2>
+    <div class="week-controls">
+      <button onclick="prevWeek()">&larr; Previous</button>
+      <label id="weekLabel"></label>
+      <button onclick="nextWeek()">Next &rarr;</button>
+    </div>
+    <textarea id="template" readonly></textarea>
+    <br>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    <span id="copied">Copied!</span>
+  </div>
+  <script>
+    // EDIT HERE IF YOU WANT TO CHANGE THE DEFAULT START TIMES / NO STREAM DAYS
+    // Kentucky Eastern Time (America/Kentucky/Louisville)
+    // Mon, Wed, Fri = 10:00 PM, Sun = 9:00 PM, Tue/Thu/Sat = Family Night
+	// For NO STREAM DAYS, set family: true
+    const weekDays = [
+      { name: "Monday",    family: false, time: "22:00" }, // 10:00 PM
+      { name: "Tuesday",   family: true,  time: "22:00" }, // Family Night
+      { name: "Wednesday", family: false, time: "22:00" }, // 10:00 PM
+      { name: "Thursday",  family: true,  time: "22:00" }, // Family Night
+      { name: "Friday",    family: false, time: "22:00" }, // 10:00 PM
+      { name: "Saturday",  family: true,  time: "22:00" }, // Family Night
+      { name: "Sunday",    family: false, time: "21:00" }, // 9:00 PM
+    ];
+
+    let weekOffset = 0;
+
+    function getMonday(d) {
+      d = new Date(d);
+      let day = d.getDay(),
+        diff = d.getDate() - day + (day === 0 ? -6 : 1);
+      return new Date(d.setDate(diff));
+    }
+
+    function getWeekDates(offset) {
+      let now = new Date();
+      let monday = getMonday(now);
+      monday.setHours(0, 0, 0, 0);
+      monday.setDate(monday.getDate() + (offset * 7));
+      let dates = [];
+      for (let i = 0; i < 7; i++) {
+        let d = new Date(monday);
+        d.setDate(monday.getDate() + i);
+        d.setHours(0, 0, 0, 0);
+        dates.push(d);
+      }
+      return dates;
+    }
+
+    // Returns a Date object set to the correct time in Kentucky's timezone
+    function kentuckyTimeForDate(date, timeStr) {
+      // timeStr: "HH:MM"
+      let [h, m] = timeStr.split(":").map(Number);
+      // Create base date at midnight UTC
+      let base = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), h, m, 0));
+      // Convert to Kentucky time using locale string
+      let tz = "America/Kentucky/Louisville";
+      let est = new Date(base.toLocaleString("en-US", { timeZone: tz }));
+      // Set the hours/minutes in that time zone
+      est.setHours(h, m, 0, 0);
+      return est;
+    }
+
+    function update() {
+      let dates = getWeekDates(weekOffset);
+      const options = { month: 'long', day: 'numeric', year: 'numeric' };
+      let weekLabel = `${dates[0].toLocaleDateString(undefined, options)} – ${dates[6].toLocaleDateString(undefined, options)}`;
+      document.getElementById('weekLabel').textContent = weekLabel;
+
+      let template = `--Schedule:\n(Date and time are displayed to reflect everyone's individual time zone)\n\n`;
+      for (let i = 0; i < 7; i++) {
+        let day = weekDays[i];
+        let nyDate = kentuckyTimeForDate(dates[i], day.time);
+        let unix = Math.floor(nyDate.getTime() / 1000);
+        if (day.family) {
+          template += `- *<t:${unix}:F>* - **No Stream/Family Night**\n\n`;
+        } else {
+          template += `- *<t:${unix}:F>* - \n\n`;
+        }
+      }
+      document.getElementById('template').value = template.trim();
+      document.getElementById('copied').style.display = 'none';
+    }
+
+    function prevWeek() {
+      weekOffset--;
+      update();
+    }
+
+    function nextWeek() {
+      weekOffset++;
+      update();
+    }
+
+    function copyToClipboard() {
+      let textarea = document.getElementById('template');
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+      document.execCommand('copy');
+      document.getElementById('copied').style.display = 'inline';
+      setTimeout(() => { document.getElementById('copied').style.display = 'none'; }, 1400);
+    }
+
+    // Initialize on load
+    update();
+  </script>
+</body>
+</html>
